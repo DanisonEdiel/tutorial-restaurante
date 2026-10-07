@@ -31,6 +31,16 @@ Para que otra persona edite y construya el proyecto, comparta esta carpeta compl
 
 `tutorial-restaurante-proyecto.zip` contiene precisamente esos archivos fuente. Descomprímalo en una carpeta nueva y ejecute allí `npm run build`; no depende de la ubicación original en ODO.
 
+## GitHub y Vercel
+
+Suba a GitHub los archivos fuente de esta carpeta, incluidos `.gitignore`, `vercel.json`, `package.json`, `scripts/` y `assets/`. Los videos y las imágenes son necesarios. El `.gitignore` excluye el build `dist/`, dependencias, ZIP, configuración local de Vercel, archivos de entorno y logs.
+
+`vercel.json` configura **Other** como framework, omite la instalación porque no hay dependencias, ejecuta `npm run build` y publica **dist**. Este archivo debe estar junto a `package.json` en la raíz del proyecto seleccionado en Vercel. Para este repositorio independiente, la raíz es la propia raíz del repositorio.
+
+Si aparece «No Output Directory named public», compruebe que el commit desplegado incluye `vercel.json`. También puede poner `dist` en **Project Settings → Build and Deployment → Output Directory**. Referencia: [configuración oficial de Vercel](https://vercel.com/docs/project-configuration/vercel-json#outputdirectory).
+
+La configuración no especifica una cuenta, equipo ni proyecto de Vercel. El destino corresponde al proyecto que usted vinculó a GitHub en su cuenta. No requiere tokens ni variables de entorno para construir este tutorial.
+
 ## Editar
 
 | Ubicación | Contenido |
