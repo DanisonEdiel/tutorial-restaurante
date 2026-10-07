@@ -1,0 +1,35 @@
+Node: RestaurantCatalogWorkspace.vue
+  ID:        odo_front_src_modules_restaurants_components_catalog_restaurantcatalogworkspace
+  Source:    odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue L1
+  Type:      code
+  Community: odo-front: RestaurantCatalogWorkspace.vue / add()
+  Lesson: tentative — 1 useful, score=0.999439039 [code changed since — re-verify]
+  Degree:    47
+
+Connections (47):
+  --> vue [imports_from] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L2
+  --> restaurant.ts [imports_from] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L7
+  --> vue-router [imports_from] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L14
+  --> catalog.ts [imports_from] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L6
+  --> CatalogOffersEditor.vue [imports_from] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L9
+  --> CatalogGroupsEditor.vue [imports_from] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L11
+  --> CatalogProductSelector.vue [imports_from] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L8
+  --> CatalogMenusEditor.vue [imports_from] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L10
+  --> useRestaurantAdminContext.ts [imports_from] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L4
+  --> cloneCatalog() [imports] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L6
+  --> CatalogReview.vue [imports_from] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L12
+  --> CatalogConflictResolver.vue [imports_from] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L13
+  --> useRestaurantCatalog.ts [imports_from] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L3
+  --> useRestaurantAdminContext() [imports] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L4
+  --> newId() [imports] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L6
+  --> CatalogOffer [imports] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L5
+  --> serviceModeLabel() [imports] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L7
+  --> COMPONENT_OPTIONS [imports] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L6
+  --> CatalogItem [imports] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L5
+  --> add() [contains] [EXTRACTED] odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue:L79
+  ... and 27 more
+  Grouped by file:
+    --> odo-front/src/modules/restaurants/components/catalog/RestaurantCatalogWorkspace.vue: 24 connections
+    <-- odo-front/src/modules/restaurants/pages/RestaurantMenusView.vue: 1 connection
+    <-- odo-front/src/modules/restaurants/pages/RestaurantModifiersView.vue: 1 connection
+    <-- odo-front/src/modules/restaurants/pages/RestaurantOffersView.vue: 1 connection

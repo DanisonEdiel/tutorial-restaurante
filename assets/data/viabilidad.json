@@ -1,0 +1,233 @@
+{
+  "mode": "benchmark",
+  "automatedSeconds": 15.093,
+  "actions": 82,
+  "flows": [
+    {
+      "file": "01-restaurante",
+      "title": "1. Crear el restaurante",
+      "actions": 4,
+      "seconds": 0.679
+    },
+    {
+      "file": "02-sala-y-mesas",
+      "title": "2. Preparar sala y mesas",
+      "actions": 8,
+      "seconds": 1.626
+    },
+    {
+      "file": "03-cocina",
+      "title": "3. Definir la cocina",
+      "actions": 5,
+      "seconds": 0.566
+    },
+    {
+      "file": "04-turno",
+      "title": "4. Definir el turno del equipo",
+      "actions": 6,
+      "seconds": 0.614
+    },
+    {
+      "file": "05-productos",
+      "title": "5. Preparar varios productos a la carta",
+      "actions": 8,
+      "seconds": 1.4
+    },
+    {
+      "file": "06-menu",
+      "title": "6. Construir el menú completo",
+      "actions": 20,
+      "seconds": 3.144
+    },
+    {
+      "file": "07-extras",
+      "title": "7. Configurar extras y asignarlos juntos",
+      "actions": 16,
+      "seconds": 1.27
+    },
+    {
+      "file": "08-revisar-y-aplicar",
+      "title": "8. Retomar, probar y aplicar",
+      "actions": 15,
+      "seconds": 5.739
+    }
+  ],
+  "publication": {
+    "offers": 9,
+    "menus": 1,
+    "menuComponents": 6,
+    "groups": 1,
+    "revision": 1
+  },
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/acl/notifications"
+    },
+    {
+      "method": "GET",
+      "path": "/acl/notifications"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants"
+    },
+    {
+      "method": "GET",
+      "path": "/inventory/base-products/company/tutorial-company"
+    },
+    {
+      "method": "GET",
+      "path": "/inventory/warehouses/company/tutorial-company/available"
+    },
+    {
+      "method": "POST",
+      "path": "/restaurants"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants/example/configuration"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants/example/catalog/draft"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants/sessions/active"
+    },
+    {
+      "method": "POST",
+      "path": "/restaurants/example/areas"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants/example/configuration"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants/sessions/active"
+    },
+    {
+      "method": "PUT",
+      "path": "/restaurants/example/areas/areas-0/layout"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants/example/configuration"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants/sessions/active"
+    },
+    {
+      "method": "POST",
+      "path": "/restaurants/example/preparation-centers"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants/example/configuration"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants/sessions/active"
+    },
+    {
+      "method": "POST",
+      "path": "/restaurants/example/shifts"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants/example/configuration"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants/sessions/active"
+    },
+    {
+      "method": "PUT",
+      "path": "/restaurants/example/catalog/draft"
+    },
+    {
+      "method": "PUT",
+      "path": "/restaurants/example/catalog/draft"
+    },
+    {
+      "method": "PUT",
+      "path": "/restaurants/example/catalog/draft"
+    },
+    {
+      "method": "PUT",
+      "path": "/restaurants/example/catalog/draft"
+    },
+    {
+      "method": "GET",
+      "path": "/acl/notifications"
+    },
+    {
+      "method": "GET",
+      "path": "/acl/notifications"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants"
+    },
+    {
+      "method": "GET",
+      "path": "/inventory/base-products/company/tutorial-company"
+    },
+    {
+      "method": "GET",
+      "path": "/inventory/warehouses/company/tutorial-company/available"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants/example/configuration"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants/example/catalog/draft"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants/sessions/active"
+    },
+    {
+      "method": "POST",
+      "path": "/restaurants/example/catalog/draft/validate"
+    },
+    {
+      "method": "POST",
+      "path": "/restaurants/example/catalog/draft/apply"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants/example/configuration"
+    },
+    {
+      "method": "GET",
+      "path": "/restaurants/example/catalog/draft"
+    }
+  ],
+  "unexpected": []
+}

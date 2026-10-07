@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tutorial Restaurante: preparación administrativa de ODO con diagrama, videos por flujo y recorrido completo.">
+  <title>Tutorial Restaurante · ODO</title>
+  <link rel="icon" href="./assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/site.css">
+  <script src="./assets/js/main.js" defer></script>
+</head>
+<body>
+<header>
+  <span class="pill">
+    Tutorial Restaurante · ODO
+  </span>
+  <h1>
+    Desde un restaurante vacío hasta un catálogo listo para aplicar
+  </h1>
+  <p>
+    Un orden de trabajo, las decisiones que debe tomar y los videos del recorrido actual.
+  </p>
+  <nav>
+    <a href="#viabilidad">
+      ¿Es viable y rápido?
+    </a>
+    <a href="#diagrama">
+      Diagrama
+    </a>
+    <a href="#campos">
+      Qué significa cada decisión
+    </a>
+    <a href="#videos">
+      Tutoriales
+    </a>
+  </nav>
+</header>
+<main>
+  <section id="viabilidad">
+    <h2>
+      Comprobación antes de grabar
+    </h2>
+    <div class="callout">
+      <p>
+        <strong>
+          Resultado automático:
+        </strong>
+        82 acciones contadas y 15.1 segundos sin pausas de tutorial. Incluye crear el local, preparar sala, cocina y turno, 3 ofertas a la carta, un menú con 6 alternativas, 2 extras, recarga y aplicación.
+      </p>
+      <p>
+        Esto prueba que el recorrido se puede completar con una API simulada. La facilidad y el tiempo de una persona nueva requieren una prueba de tarea sin instrucciones. Tampoco demuestra latencia, persistencia o concurrencia del servidor real.
+      </p>
+    </div>
+    <p>
+      <a href="./viabilidad.html">
+        Leer hallazgos y mejoras pendientes
+      </a>
+      ·
+      <a href="./assets/data/viabilidad.json">
+        Medición y solicitudes simuladas
+      </a>
+    </p>
+  </section>
+  <section id="diagrama">
+    <h2>
+      Diagrama de preparación desde cero
+    </h2>
+    <p>
+      El orden es recomendado. Sala, cocina y turnos tienen su propio guardado; productos, menús y extras comparten el borrador.
+    </p>
+    <div class="tools">
+      <button id="zoom" type="button" aria-pressed="false" aria-controls="preparation-diagram">
+        Ampliar diagrama
+      </button>
+      <button id="print-guide" type="button">
+        Imprimir / guardar como PDF
+      </button>
+      <a href="./assets/diagrams/flujo-restaurante.svg" download>
+        Descargar SVG
+      </a>
+      <a href="./assets/diagrams/flujo-restaurante.mmd" download>
+        Fuente Mermaid
+      </a>
+    </div>
+    <div class="diagram">
+      <img id="preparation-diagram" src="./assets/diagrams/flujo-restaurante.svg" alt="Preparación administrativa desde cero: Inventario, local, sala, cocina, turnos, carta o menú, extras, borrador, revisión, bloqueos y aplicación." width="1440" height="2005">
+    </div>
+  </section>
+  <section id="campos">
+    <h2>
+      Decisiones que suelen confundir
+    </h2>
+    <details open>
+      <summary>
+        Producto base, oferta y menú
+      </summary>
+      <p>
+        Inventario contiene la ficha del producto. La oferta define cómo lo vende este restaurante: modalidad, destino, consumo y precio. El menú organiza ofertas en alternativas y tiene su precio base. El mismo producto puede tener una oferta a la carta y otra para menú fijo.
+      </p>
+    </details>
+    <details>
+      <summary>
+        Cocina, consumo y bodega
+      </summary>
+      <p>
+        Cocina o bar indica quién prepara el pedido. Sin consumo no descuenta stock. Descontar producto resta el producto vendido; descontar receta resta sus ingredientes al confirmar el pedido. Para ambos consumos se necesita una bodega de la empresa; una receta además debe ser válida. Esta grabación usa Sin consumo y no certifica recetas ni existencias.
+      </p>
+    </details>
+    <details>
+      <summary>
+        Precio heredado, propio y recargo
+      </summary>
+      <p>
+        El precio heredado viene de Inventario. Un precio propio solo modifica esa oferta. En el menú fijo, el ejemplo suma precio base, recargos por producto elegido y extras elegidos; no suma el precio a la carta del plato. Las referencias históricas incluidas no descuentan recargos.
+      </p>
+    </details>
+    <details>
+      <summary>
+        Alternativas y límites
+      </summary>
+      <p>
+        Dos entradas son dos alternativas, no dos platos obligatorios. Mínimo 1 y máximo 1 indica elegir una. En extras, mínimo 0 y máximo 1 permite ninguno o uno. Revise los límites diferentes de datos históricos antes de confirmar su unificación.
+      </p>
+    </details>
+    <details>
+      <summary>
+        Guardar, revisar y aplicar
+      </summary>
+      <p>
+        Guardar conserva el borrador compartido. Revisar valida datos e impacto. Aplicar publica el conjunto. Si otro administrador cambia la versión, compare y resuelva; si hay servicio activo, conserve el borrador, localice la atención y vuelva a revisar después de resolverla.
+      </p>
+    </details>
+    <details>
+      <summary>
+        ¿Qué significa Listo para operar?
+      </summary>
+      <p>
+        El código actual requiere restaurante activo, nombre y código, área y mesa activas, cocina o bar, turno y una oferta disponible. No exige menús ni extras ni acredita que una impresora o integración externa funcione. Es necesario ensayar la operación antes de abrir servicio.
+      </p>
+    </details>
+  </section>
+  <section id="videos">
+    <h2>
+      Videos separados y recorrido completo
+    </h2>
+    <p>
+      Grabados sobre la interfaz actual con Playwright CLI local y datos ficticios. Incluyen cursor y textos en español; no tienen voz. No se grabó la contraseña ni se modificó el catálogo real.
+    </p>
+    <article>
+      <h3>
+        Recorrido completo
+      </h3>
+      <video controls preload="metadata" aria-label="Preparación completa">
+        <source src="./assets/videos/00-recorrido-completo.webm" type="video/webm">
+      </video>
+      <p>
+        <label>
+          Velocidad del video
+          <select class="speed">
+            <option value="0.5">
+              Paso a paso · 0,5×
+            </option>
+            <option value="0.75">
+              0,75×
+            </option>
+            <option value="1" selected>
+              Normal · 1×
+            </option>
+          </select>
+        </label>
+      </p>
+      <p>
+        <a href="./assets/videos/00-recorrido-completo.webm" download>
+          Guardar recorrido completo
+        </a>
+      </p>
+    </article>
+    <article id="01-restaurante">
+      <h3>
+        1. Crear el restaurante
+      </h3>
+      <ol>
+        <li>
+          Seleccione la empresa antes de crear el local.
+        </li>
+        <li>
+          Escriba nombre y código. El tipo describe el establecimiento; la foto es opcional.
+        </li>
+        <li>
+          Guardar crea el restaurante; el resumen muestra los requisitos pendientes.
+        </li>
+      </ol>
+      <p>
+        4 acciones del guion · 0.7 s en la prueba automática sin pausas.
+      </p>
+      <video controls preload="metadata" poster="./assets/images/01-restaurante.png" aria-label="1. Crear el restaurante">
+        <source src="./assets/videos/01-restaurante.webm" type="video/webm">
+      </video>
+      <p>
+        <label>
+          Velocidad del video
+          <select class="speed">
+            <option value="0.5">
+              Paso a paso · 0,5×
+            </option>
+            <option value="0.75">
+              0,75×
+            </option>
+            <option value="1" selected>
+              Normal · 1×
+            </option>
+          </select>
+        </label>
+      </p>
+      <p>
+        <a href="./assets/videos/01-restaurante.webm" download>
+          Guardar video
+        </a>
+      </p>
+    </article>
+    <article id="02-sala-y-mesas">
+      <h3>
+        2. Preparar sala y mesas
+      </h3>
+      <ol>
+        <li>
+          Cree el área Salón principal y un código.
+        </li>
+        <li>
+          Añada una mesa rectangular y duplíquela. Ajuste nombre, capacidad y ubicación si hace falta.
+        </li>
+        <li>
+          Guardar plano persiste la sala; no usa el borrador del catálogo.
+        </li>
+      </ol>
+      <p>
+        8 acciones del guion · 1.6 s en la prueba automática sin pausas.
+      </p>
+      <video controls preload="metadata" poster="./assets/images/02-sala-y-mesas.png" aria-label="2. Preparar sala y mesas">
+        <source src="./assets/videos/02-sala-y-mesas.webm" type="video/webm">
+      </video>
+      <p>
+        <label>
+          Velocidad del video
+          <select class="speed">
+            <option value="0.5">
+              Paso a paso · 0,5×
+            </option>
+            <option value="0.75">
+              0,75×
+            </option>
+            <option value="1" selected>
+              Normal · 1×
+            </option>
+          </select>
+        </label>
+      </p>
+      <p>
+        <a href="./assets/videos/02-sala-y-mesas.webm" download>
+          Guardar video
+        </a>
+      </p>
+    </article>
+    <article id="03-cocina">
+      <h3>
+        3. Definir la cocina
+      </h3>
+      <ol>
+        <li>
+          Añada Cocina principal con su código.
+        </li>
+        <li>
+          El destino de una oferta decide dónde se prepara el pedido.
+        </li>
+        <li>
+          Impresión queda desactivada en este ejemplo; una prueba física requiere configurar la clave y el dispositivo.
+        </li>
+      </ol>
+      <p>
+        5 acciones del guion · 0.6 s en la prueba automática sin pausas.
+      </p>
+      <video controls preload="metadata" poster="./assets/images/03-cocina.png" aria-label="3. Definir la cocina">
+        <source src="./assets/videos/03-cocina.webm" type="video/webm">
+      </video>
+      <p>
+        <label>
+          Velocidad del video
+          <select class="speed">
+            <option value="0.5">
+              Paso a paso · 0,5×
+            </option>
+            <option value="0.75">
+              0,75×
+            </option>
+            <option value="1" selected>
+              Normal · 1×
+            </option>
+          </select>
+        </label>
+      </p>
+      <p>
+        <a href="./assets/videos/03-cocina.webm" download>
+          Guardar video
+        </a>
+      </p>
+    </article>
+    <article id="04-turno">
+      <h3>
+        4. Definir el turno del equipo
+      </h3>
+      <ol>
+        <li>
+          Defina Servicio del día de 08:00 a 22:00.
+        </li>
+        <li>
+          La tolerancia es para la llegada del equipo.
+        </li>
+        <li>
+          Este turno no limita el horario de venta del menú.
+        </li>
+      </ol>
+      <p>
+        6 acciones del guion · 0.6 s en la prueba automática sin pausas.
+      </p>
+      <video controls preload="metadata" poster="./assets/images/04-turno.png" aria-label="4. Definir el turno del equipo">
+        <source src="./assets/videos/04-turno.webm" type="video/webm">
+      </video>
+      <p>
+        <label>
+          Velocidad del video
+          <select class="speed">
+            <option value="0.5">
+              Paso a paso · 0,5×
+            </option>
+            <option value="0.75">
+              0,75×
+            </option>
+            <option value="1" selected>
+              Normal · 1×
+            </option>
+          </select>
+        </label>
+      </p>
+      <p>
+        <a href="./assets/videos/04-turno.webm" download>
+          Guardar video
+        </a>
+      </p>
+    </article>
+    <article id="05-productos">
+      <h3>
+        5. Preparar varios productos a la carta
+      </h3>
+      <ol>
+        <li>
+          Esta rama es opcional si solo venderá menús.
+        </li>
+        <li>
+          Marque Ensalada, Hamburguesa y Jugo; continúe con los tres juntos.
+        </li>
+        <li>
+          Con una sola cocina, el selector la propone. El ejemplo usa Sin consumo y el precio de Inventario.
+        </li>
+        <li>
+          Añadir al borrador conserva las ofertas; guardar aún no las publica.
+        </li>
+      </ol>
+      <p>
+        8 acciones del guion · 1.4 s en la prueba automática sin pausas.
+      </p>
+      <video controls preload="metadata" poster="./assets/images/05-productos.png" aria-label="5. Preparar varios productos a la carta">
+        <source src="./assets/videos/05-productos.webm" type="video/webm">
+      </video>
+      <p>
+        <label>
+          Velocidad del video
+          <select class="speed">
+            <option value="0.5">
+              Paso a paso · 0,5×
+            </option>
+            <option value="0.75">
+              0,75×
+            </option>
+            <option value="1" selected>
+              Normal · 1×
+            </option>
+          </select>
+        </label>
+      </p>
+      <p>
+        <a href="./assets/videos/05-productos.webm" download>
+          Guardar video
+        </a>
+      </p>
+    </article>
+    <article id="06-menu">
+      <h3>
+        6. Construir el menú completo
+      </h3>
+      <ol>
+        <li>
+          Empiece directamente aquí si solo venderá menús: Crear un menú completo.
+        </li>
+        <li>
+          Nombre Almuerzo completo, modalidad Menú fijo y precio base $7.
+        </li>
+        <li>
+          Seleccione dos entradas, tres principales y una bebida por sección. El cliente elige una alternativa de cada sección.
+        </li>
+        <li>
+          El selector prepara las ofertas de Menú fijo que faltan, aunque ya haya ofertas a la carta.
+        </li>
+        <li>
+          Defina un recargo de $2 para la hamburguesa y guarde el borrador.
+        </li>
+      </ol>
+      <p>
+        20 acciones del guion · 3.1 s en la prueba automática sin pausas.
+      </p>
+      <video controls preload="metadata" poster="./assets/images/06-menu.png" aria-label="6. Construir el menú completo">
+        <source src="./assets/videos/06-menu.webm" type="video/webm">
+      </video>
+      <p>
+        <label>
+          Velocidad del video
+          <select class="speed">
+            <option value="0.5">
+              Paso a paso · 0,5×
+            </option>
+            <option value="0.75">
+              0,75×
+            </option>
+            <option value="1" selected>
+              Normal · 1×
+            </option>
+          </select>
+        </label>
+      </p>
+      <p>
+        <a href="./assets/videos/06-menu.webm" download>
+          Guardar video
+        </a>
+      </p>
+    </article>
+    <article id="07-extras">
+      <h3>
+        7. Configurar extras y asignarlos juntos
+      </h3>
+      <ol>
+        <li>
+          Cree Acompañamiento con mínimo 0 y máximo 1.
+        </li>
+        <li>
+          Añada queso por $1,50 y papas por $2 en el mismo editor.
+        </li>
+        <li>
+          Asigne el grupo a la hamburguesa y al pollo de Menú fijo.
+        </li>
+        <li>
+          Revise los menús afectados: el grupo es compartido por las ofertas asignadas.
+        </li>
+      </ol>
+      <p>
+        16 acciones del guion · 1.3 s en la prueba automática sin pausas.
+      </p>
+      <video controls preload="metadata" poster="./assets/images/07-extras.png" aria-label="7. Configurar extras y asignarlos juntos">
+        <source src="./assets/videos/07-extras.webm" type="video/webm">
+      </video>
+      <p>
+        <label>
+          Velocidad del video
+          <select class="speed">
+            <option value="0.5">
+              Paso a paso · 0,5×
+            </option>
+            <option value="0.75">
+              0,75×
+            </option>
+            <option value="1" selected>
+              Normal · 1×
+            </option>
+          </select>
+        </label>
+      </p>
+      <p>
+        <a href="./assets/videos/07-extras.webm" download>
+          Guardar video
+        </a>
+      </p>
+    </article>
+    <article id="08-revisar-y-aplicar">
+      <h3>
+        8. Retomar, probar y aplicar
+      </h3>
+      <ol>
+        <li>
+          Recargue y compruebe que recuperó el borrador.
+        </li>
+        <li>
+          Revise y pruebe una entrada, hamburguesa con queso y una bebida. El resto de alternativas tiene cantidad 0.
+        </li>
+        <li>
+          Compruebe $10,50 y el impacto. Aplicar publica todo junto; necesita cero atenciones activas.
+        </li>
+        <li>
+          El resumen muestra seis requisitos completados; pruebe la operación aparte antes del servicio.
+        </li>
+      </ol>
+      <p>
+        15 acciones del guion · 5.7 s en la prueba automática sin pausas.
+      </p>
+      <video controls preload="metadata" poster="./assets/images/08-revisar-y-aplicar.png" aria-label="8. Retomar, probar y aplicar">
+        <source src="./assets/videos/08-revisar-y-aplicar.webm" type="video/webm">
+      </video>
+      <p>
+        <label>
+          Velocidad del video
+          <select class="speed">
+            <option value="0.5">
+              Paso a paso · 0,5×
+            </option>
+            <option value="0.75">
+              0,75×
+            </option>
+            <option value="1" selected>
+              Normal · 1×
+            </option>
+          </select>
+        </label>
+      </p>
+      <p>
+        <a href="./assets/videos/08-revisar-y-aplicar.webm" download>
+          Guardar video
+        </a>
+      </p>
+    </article>
+  </section>
+  <section>
+    <h2>
+      Prueba con una persona nueva
+    </h2>
+    <p>
+      Sin explicar los botones: “Prepare un local con dos mesas y un almuerzo de $7. Ofrezca dos entradas, tres principales y una bebida; añada queso por $1,50 a dos principales. Guarde, retome y aplique cuando esté listo”. Mida tiempo, dudas, retrocesos y elecciones incorrectas. Compare con el video solo después del intento.
+    </p>
+    <p class="fine">
+      Fuentes de reglas: RestaurantOperationsService.configurationStatus, RestaurantCatalogWorkspace, CatalogMenusEditor, CatalogGroupsEditor y catalogPreview.
+      <a href="./assets/docs/graphify-consulta.txt">
+        Consulta del grafo y sus límites
+      </a>
+      . Los tutoriales no cubren alta de empresa, permisos, productos base, recetas, impresoras físicas, pagos ni cierre de atenciones.
+    </p>
+  </section>
+</main>
+</body>
+</html>

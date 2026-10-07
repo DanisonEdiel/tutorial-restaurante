@@ -1,0 +1,26 @@
+flowchart TD
+ A[Empresa y permiso de configuración] --> B{Productos existentes en Inventario}
+ B -->|No| I[Crear productos base y preparar recetas o bodegas en Inventario]
+ I --> C[Crear restaurante: nombre, código, tipo]
+ B -->|Sí| C
+ C --> D[Sala: áreas, mesas, capacidad y guardar plano]
+ D --> E[Cocina o bar; impresión opcional]
+ E --> F[Turno: registro de entrada del equipo]
+ F --> G{Carta, menú o ambos}
+ G --> H[Seleccionar varios productos y ajustes comunes]
+ G --> J[Crear menú; alternativas por sección y límites]
+ J --> K[Crear o reutilizar ofertas de la modalidad dentro del borrador]
+ H --> L[Extras: grupo, opciones, recargos y asignación múltiple]
+ K --> L
+ L --> M[Guardar borrador y retomar con el equipo]
+ M --> N[Revisar impacto y elecciones de ejemplo]
+ N --> O{Errores o conflicto}
+ O -->|Sí| P[Corregir o comparar y resolver versiones]
+ P --> M
+ O -->|No| Q{Atenciones OPEN o PENDING_CLOSE}
+ Q -->|Sí| R[Conservar borrador; localizar y resolver atenciones en operación]
+ R --> N
+ Q -->|No| S[Aplicar catálogo completo en una transacción]
+ S --> T{Resultado}
+ T -->|Fallo| N
+ T -->|Éxito| U[Comprobar resumen; ensayar operación en pruebas]

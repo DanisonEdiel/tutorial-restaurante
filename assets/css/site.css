@@ -1,0 +1,163 @@
+:root {
+  color-scheme:light
+}
+* {
+  box-sizing:border-box
+}
+body {
+  margin:0;
+  background:#f7f5f2;
+  color:#242b35;
+  font:17px/1.6 system-ui,Arial;
+}
+header,main {
+  max-width:1200px;
+  margin:auto;
+  padding:28px;
+}
+header {
+  border-bottom:1px solid #c5cbd2
+}
+h1,h2,h3 {
+  color:#1d3557;
+  line-height:1.2;
+}
+h1 {
+  font-size:40px;
+  max-width:850px;
+}
+nav {
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+a {
+  color:#1d3557;
+  text-underline-offset:4px;
+}
+section {
+  margin:40px 0
+}
+.pill {
+  display:inline-block;
+  background:#e7eef7;
+  border-radius:20px;
+  padding:5px 14px;
+}
+.callout {
+  border-left:4px solid #b49b6a;
+  background:#fff;
+  padding:20px;
+}
+.diagram {
+  overflow:auto;
+  border:1px solid #bfc5ce;
+  border-radius:12px;
+  background:#f7f5f2;
+}
+.diagram img {
+  width:100%;
+  min-width:900px;
+  height:auto;
+  display:block;
+}
+.diagram img.is-expanded {
+  width:1600px;
+}
+button {
+  font:inherit;
+  background:#1d3557;
+  color:white;
+  border:0;
+  border-radius:6px;
+  padding:8px 15px;
+  cursor:pointer;
+}
+button:focus-visible,a:focus-visible,summary:focus-visible {
+  outline:3px solid #856a38;
+  outline-offset:4px;
+}
+.tools {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:14px;
+}
+article {
+  background:white;
+  padding:24px;
+  border:1px solid #c5cbd2;
+  border-radius:12px;
+  margin:24px 0;
+}
+video {
+  width:100%;
+  max-height:700px;
+  background:#10141b;
+  border-radius:8px;
+}
+table {
+  border-collapse:collapse;
+  width:100%;
+  font-size:16px;
+}
+td,th {
+  text-align:left;
+  padding:12px;
+  border-bottom:1px solid #c5cbd2;
+  vertical-align:top;
+}
+details {
+  margin:15px 0;
+  background:#fff;
+  padding:18px;
+  border-radius:8px;
+}
+summary {
+  cursor:pointer;
+  color:#1d3557;
+  font-weight:650;
+}
+.fine {
+  font-size:15px;
+  color:#515c69;
+}
+@media(max-width:600px) {
+  header,main {
+    padding:18px
+  }
+  h1 {
+    font-size:31px
+  }
+  article {
+    padding:15px
+  }
+}
+@media print {
+  nav,.tools,video {
+    display:none
+  }
+  header,main {
+    max-width:none
+  }
+  .diagram img, .diagram img.is-expanded {
+    width:100%;
+    min-width:0;
+  }
+  article {
+    break-inside:avoid
+  }
+}
+.speed {
+  font:inherit;
+  margin-left:8px;
+  padding:4px 8px;
+  color:#242b35;
+  background:#fff;
+  border:1px solid #687587;
+  border-radius:4px;
+}
+.speed:focus-visible {
+  outline:3px solid #856a38;
+  outline-offset:4px;
+}

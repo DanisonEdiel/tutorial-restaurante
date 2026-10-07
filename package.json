@@ -1,0 +1,13 @@
+{
+  "name": "tutorial-restaurante",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tutorial Restaurante: guía, diagrama y videos de preparación administrativa de ODO.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "node scripts/serve.mjs --dir . --port 4173",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs --dir dist --port 4174"
+  }
+}

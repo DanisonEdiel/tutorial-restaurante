@@ -1,0 +1,27 @@
+body {
+  max-width:950px;
+  margin:auto;
+  padding:28px;
+  background:#f7f5f2;
+  color:#242b35;
+  font:17px/1.65 system-ui;
+}
+h1,h2,a {
+  color:#1d3557
+}
+code {
+  overflow-wrap:anywhere
+}
+a:focus-visible {
+  outline:3px solid #856a38
+}
+@media(max-width:600px) {
+  body {
+    padding:18px;
+    font-size:16px;
+  }
+  h1 {
+    font-size:30px;
+    line-height:1.2;
+  }
+}

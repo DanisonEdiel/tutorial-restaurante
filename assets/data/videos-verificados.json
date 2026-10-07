@@ -1,0 +1,79 @@
+{
+  "codec": "VP8",
+  "container": "WebM",
+  "ffmpeg": "n7.0.1-playwright-build-1011",
+  "videos": [
+    {
+      "file": "00-recorrido-completo.webm",
+      "seconds": 115.8,
+      "bytes": 13795034,
+      "fullDecode": true,
+      "dimensions": "1440x1000",
+      "fps": 15
+    },
+    {
+      "file": "01-restaurante.webm",
+      "seconds": 9.27,
+      "bytes": 1061798,
+      "fullDecode": true,
+      "dimensions": "1440x1000",
+      "fps": 15
+    },
+    {
+      "file": "02-sala-y-mesas.webm",
+      "seconds": 12.27,
+      "bytes": 2015323,
+      "fullDecode": true,
+      "dimensions": "1440x1000",
+      "fps": 15
+    },
+    {
+      "file": "03-cocina.webm",
+      "seconds": 9.4,
+      "bytes": 1390705,
+      "fullDecode": true,
+      "dimensions": "1440x1000",
+      "fps": 15
+    },
+    {
+      "file": "04-turno.webm",
+      "seconds": 10,
+      "bytes": 1255828,
+      "fullDecode": true,
+      "dimensions": "1440x1000",
+      "fps": 15
+    },
+    {
+      "file": "05-productos.webm",
+      "seconds": 12,
+      "bytes": 1932814,
+      "fullDecode": true,
+      "dimensions": "1440x1000",
+      "fps": 15
+    },
+    {
+      "file": "06-menu.webm",
+      "seconds": 21.07,
+      "bytes": 4092545,
+      "fullDecode": true,
+      "dimensions": "1440x1000",
+      "fps": 15
+    },
+    {
+      "file": "07-extras.webm",
+      "seconds": 16.47,
+      "bytes": 2794214,
+      "fullDecode": true,
+      "dimensions": "1440x1000",
+      "fps": 15
+    },
+    {
+      "file": "08-revisar-y-aplicar.webm",
+      "seconds": 24.33,
+      "bytes": 3970407,
+      "fullDecode": true,
+      "dimensions": "1440x1000",
+      "fps": 15
+    }
+  ]
+}

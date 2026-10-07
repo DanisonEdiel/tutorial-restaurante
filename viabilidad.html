@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tutorial Restaurante: preparación administrativa de ODO con diagrama, videos por flujo y recorrido completo.">
+  <title>Tutorial Restaurante · Viabilidad</title>
+  <link rel="icon" href="./assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/report.css">
+  
+</head>
+<body>
+<main>
+  <a href="./index.html">
+    Volver al diagrama y videos
+  </a>
+  <h1>
+    Viabilidad del recorrido administrativo — 2026-10-06
+  </h1>
+  <p>
+    El recorrido se puede completar con la interfaz actual y API simulada.
+    <strong>
+      Todavía no está demostrada su rapidez ni comprensión para una persona nueva.
+    </strong>
+  </p>
+  <p>
+    La prueba sin pausas añadió un restaurante vacío, un área con dos mesas, cocina y turno; seleccionó tres productos a la carta, construyó un menú fijo con dos entradas, tres principales y una bebida, configuró dos opciones de extras y las asignó a dos ofertas. Guardó, recargó, recuperó el borrador, comprobó $7 + $2 + $1,50 = $10,50 y aplicó una sola vez. Resultado: nueve ofertas (tres a la carta y seis de menú fijo), un menú, seis componentes, un grupo con dos opciones, revisión 1 y sin borrador pendiente.
+  </p>
+  <h2>
+    Medición y alcance
+  </h2>
+  <ul>
+    <li>
+      82 acciones instrumentadas; 15,093 segundos en una ejecución automática local sin pausas de tutorial.
+    </li>
+    <li>
+      “Acción” cuenta clic, llenado, selección de casilla, Escape y recarga explícitos del guion. No cuenta desplazamientos automáticos, pulsaciones de cada letra, esperas ni decisiones humanas. No equivale a 82 clics.
+    </li>
+    <li>
+      Menú: 20 acciones instrumentadas. Extras: 16. Productos a la carta: 8. Estas cifras corresponden al caso de ejemplo, no a todos los menús posibles.
+    </li>
+    <li>
+      La selección de 30 productos a la carta tardó 4,5 segundos automatizada sin el espaciado del video: reutilizó tres ofertas existentes y preparó 27 nuevas. Se recuperó desde otra página del mismo contexto simulado. Una aplicación fallida dejó intactas las ofertas publicadas y el reintento incrementó la revisión una vez. Son comprobaciones del doble de API, no de PostgreSQL.
+    </li>
+    <li>
+      Los videos añaden capítulos y pausas para leer; su duración no es el tiempo del benchmark.
+    </li>
+    <li>
+      Se usa el frontend servido en localhost:5173 con una sesión ficticia separada. Las rutas API se interceptan en el navegador antes de llegar a localhost:8080. WebSockets y llamadas externas están bloqueados. Ninguna escritura del recorrido llega al backend real.
+    </li>
+    <li>
+      Se reutiliza
+      <code>
+        odo-front/tests/helpers/catalog-api.mjs
+      </code>
+      . La simulación tiene validaciones parciales y persistencia en memoria del contexto; recargar y abrir otra página conservan el borrador mientras viva esa sesión de Playwright. No prueba persistencia PostgreSQL, otra sesión autenticada independiente, concurrencia, aislamiento real ni transacción real.
+    </li>
+    <li>
+      La primera ejecución en Vite separado (5179) no terminó de cargar. La prueba final usa el servidor disponible con interceptación completa; no se presenta ese intento fallido como cobertura.
+    </li>
+    <li>
+      No se cambió el código de la aplicación ni sus contratos, autenticación o perfiles.
+    </li>
+    <li>
+      La grabación inicial a 30 fps produjo archivos truncados aunque la interfaz terminó el recorrido. Se descartaron esas salidas y se volvió a grabar a 15 fps, verificando el cierre correcto del codificador. Los clips separados se extrajeron del recorrido continuo, conservando los capítulos. La integridad final se documenta en
+      <a href="./assets/data/videos-verificados.json">
+        videos-verificados.json
+      </a>
+      .
+    </li>
+  </ul>
+  <h2>
+    Fricciones actuales que impiden declararlo fácil
+  </h2>
+  <ol>
+    <li>
+      <strong>
+        Inventario mezcla ingredientes y productos vendibles.
+      </strong>
+      Consulta real autorizada: 49 registros, 36 RAW_MATERIAL, 9 FINISHED_GOOD y 4 RECIPE. El selector actual filtra activos, nombre/código y categoría; no distingue intención de venta. Además hay nombres iguales, como Arroz premium. Clasificar como terminado tampoco demuestra que sea un plato. Hace falta identificar el producto que se vende por nombre, código y uso; recomendar vendibles y explicar los ingredientes sin ocultarlos ni reclasificarlos silenciosamente.
+    </li>
+    <li>
+      <strong>
+        Preparar el local requiere saltar entre cuatro pantallas.
+      </strong>
+      Información, sala, cocina y turnos conservan formularios separados. El borrador unifica solo productos, menús y extras. Un siguiente paso útil sería una lista de preparación que explique requisitos y lleve a la acción pendiente, con retorno al punto de partida.
+    </li>
+    <li>
+      <strong>
+        Un menú y una oferta son conceptos diferentes.
+      </strong>
+      Se necesita explicar que el mismo producto puede tener modalidades distintas. Seleccionar primero carta y luego menú crea ofertas distintas válidas; para un negocio que solo vende menú se puede empezar directamente en “Crear un menú completo” y omitir la rama a la carta.
+    </li>
+    <li>
+      <strong>
+        El constructor exige desplazarse.
+      </strong>
+      Secciones vacías, límites y recargos alargan el editor. Hay atajos, pero conviene observar dónde una persona pierde contexto antes de cambiarlo.
+    </li>
+    <li>
+      <strong>
+        Guardar y aplicar son dos decisiones.
+      </strong>
+      El estado explica el borrador, pero la persona debe entender que guardar no publica. El tutorial destaca la revisión y los afectados, y evita presentar “incluido” como gratuidad.
+    </li>
+    <li>
+      <strong>
+        Extras compartidos tienen efecto amplio.
+      </strong>
+      Cambiar un grupo afecta las ofertas asignadas y sus menús. Hay que comprobar que una persona entiende el impacto antes de publicar.
+    </li>
+    <li>
+      <strong>
+        El resumen de preparación es limitado.
+      </strong>
+      Comprueba nombre/código, área/mesa, cocina, turno, oferta y estado activo. No acredita recetas completas, pagos, servicio, impresoras ni integración externa.
+    </li>
+  </ol>
+  <h2>
+    Prueba de tarea antes de afirmar rapidez
+  </h2>
+  <p>
+    Entregar a una persona nueva, sin video ni instrucciones de botones: “Prepare un local con dos mesas y un almuerzo de $7. Dos entradas y tres principales son alternativas; el cliente elige una de cada sección y una bebida. Añada queso por $1,50 a dos principales. Guarde, cierre la página, retome y aplique cuando esté listo”.
+  </p>
+  <p>
+    Registrar tiempo total, dudas textuales, retrocesos, ayudas necesarias, límites incorrectos y comprensión de guardar/aplicar. Verificar que obtiene $10,50 al elegir la hamburguesa con suplemento de $2 y queso. Ofrecer el video solo después del primer intento. No se ha ejecutado esta prueba humana.
+  </p>
+  <h2>
+    Fuentes y límites del grafo
+  </h2>
+  <p>
+    Se consultó el grafo existente. La consulta amplia con vocabulario verificado se truncó (32 de 234 nodos). Después se inspeccionó
+    <code>
+      RestaurantCatalogWorkspace.vue
+    </code>
+    y sus dependencias; el grafo señala código cambiado y requiere comprobación, que se complementó leyendo las fuentes actuales. La consulta concreta está en
+    <a href="./assets/docs/graphify-consulta.txt">
+      graphify-consulta.txt
+    </a>
+    .
+  </p>
+  <p>
+    Reglas revisadas en
+    <code>
+      RestaurantOperationsService.configurationStatus
+    </code>
+    ,
+    <code>
+      RestaurantCatalogWorkspace
+    </code>
+    ,
+    <code>
+      CatalogProductSelector
+    </code>
+    ,
+    <code>
+      CatalogMenusEditor
+    </code>
+    ,
+    <code>
+      CatalogGroupsEditor
+    </code>
+    y
+    <code>
+      catalogPreview
+    </code>
+    . El diagrama es una explicación del recorrido verificado, no una extracción nueva de Graphify ni certificación completa del negocio.
+  </p>
+  <p>
+    El diagrama incluye los caminos de error, conflicto y servicio activo por su lógica actual; los ocho videos principales muestran el camino correcto con cero atenciones. No incluyen creación de productos base, recetas, alta de empresas/permisos, impresoras físicas, pagos ni cierres.
+  </p>
+</main>
+</body>
+</html>
